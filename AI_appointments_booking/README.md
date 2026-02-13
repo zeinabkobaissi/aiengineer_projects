@@ -1,127 +1,76 @@
-AI Appointment Booking Agent
-Production-Style MCP + Local LLM Tool-Calling System
+AI Appointment Booking Agent (MCP + Local LLM)
 
-A production-oriented AI agent that uses a local Large Language Model (LLM) with Model Context Protocol (MCP) to securely create, list, and delete appointments via natural language.
+An AI-powered appointment scheduling agent built using the Model Context Protocol (MCP) and a local Large Language Model (LLM) via Ollama.
+The system allows users to create, list, and delete appointments using natural language while ensuring secure, structured tool execution.
 
-This project demonstrates real-world AI system architecture, including tool-calling, client–server separation, controlled execution, and persistent storage — similar to modern AI agent systems used in production.
+This project demonstrates a production-style AI agent architecture with proper client–server separation, tool schemas, and persistent storage.
 
-Key Highlights (Recruiter Focus)
+Features
 
-Production-style AI agent architecture
-
-Secure tool invocation via MCP protocol
-
-Local LLM integration using Ollama (llama3.2)
-
-Structured tool schemas with controlled execution
-
-Persistent storage layer using CSV
-
-Async client–server communication
-
-Real tool-calling (not simulated)
-
-Fully local — no external APIs required
+• Natural language appointment booking
+• Secure tool execution using MCP protocol
+• Local LLM integration using Ollama (llama3.2)
+• Create, list, and delete appointments
+• Persistent storage using CSV
+• Client–server architecture
+• Async tool execution
+• Fully local (no external APIs required)
 
 System Architecture
-                ┌─────────────────────┐
-                │        User         │
-                └──────────┬──────────┘
-                           │ Natural Language
-                           ▼
-                ┌─────────────────────┐
-                │     MCP Client      │
-                │  (Agent Controller) │
-                └──────────┬──────────┘
-                           │ Tool schemas
-                           ▼
-                ┌─────────────────────┐
-                │     Ollama LLM      │
-                │     (llama3.2)      │
-                └──────────┬──────────┘
-                           │ Tool call decision
-                           ▼
-                ┌─────────────────────┐
-                │     MCP Server      │
-                │   (Tool Provider)   │
-                └──────────┬──────────┘
-                           │
-        ┌──────────────────┼──────────────────┐
-        ▼                  ▼                  ▼
-create_appointment   list_appointments   delete_appointment
-        │                  │                  │
-        └──────────────┬───┴───────────────┘
-                       ▼
-               appointments.csv
-                (Persistence)
 
-Why This Project Matters
-
-Modern AI systems do NOT allow LLMs direct access to databases or systems.
-
-Instead, they use controlled tool access.
-
-This project replicates that exact architecture using MCP.
-
-This is the same architectural pattern used in:
-
-OpenAI tool-calling agents
-
-LangGraph agent systems
-
-Production AI assistants
-
-Autonomous AI workflows
-
-Core Components
-MCP Server
-
-Defines secure tools:
-
-create_appointment
-list_appointments
-delete_appointment
-
-
-The server exposes tools with structured schemas.
-
-The LLM cannot access files directly.
-
+User Input
+↓
 MCP Client (Agent Controller)
+↓
+Local LLM (Ollama llama3.2)
+↓
+MCP Server (Tool Provider)
+↓
+Tool Execution
+↓
+CSV Storage (appointments.csv)
+↓
+Response returned to user
+
+Architecture Components
+1. MCP Client
 
 Responsible for:
 
-Connecting to MCP server
+• Connecting to MCP server
+• Sending tool schemas to LLM
+• Handling tool calls
+• Executing tools securely
+• Returning results to LLM
 
-Sending tool schemas to LLM
+2. MCP Server
 
-Handling tool calls
+Provides structured tools:
 
-Executing tools safely
+• create_appointment
+• list_appointments
+• delete_appointment
 
-Returning results to LLM
+The server exposes tools with defined schemas.
+The LLM cannot access files directly.
 
-LLM Layer (Ollama)
+3. LLM Layer (Ollama)
 
 Model used:
 
 llama3.2
 
-
 Responsible for:
 
-Understanding user intent
+• Understanding user intent
+• Selecting appropriate tool
+• Generating tool arguments
 
-Selecting correct tool
+4. Storage Layer
 
-Generating tool arguments
-
-Storage Layer
-
-CSV persistence:
+File used:
 
 appointments.csv
-
 
 Example:
 
@@ -129,65 +78,60 @@ name,date,time
 Zeinab,Monday,4:00 to 5:00
 Mariam,Friday,8:00 to 9:00
 
-Example Execution Flow
+Project Structure
+project/
+│
+├── mcp_server.py
+├── mcp_client.py
+├── appointments.csv
+├── README.md
 
-User input:
+Example Usage
 
-Book an appointment for Zeinab on Monday at 4:00 to 5:00
+Create appointment:
 
+Book an appointment for Zeinab on Monday from 4:00 to 5:00
 
-Execution pipeline:
+List appointments:
 
-User → MCP Client → LLM
-LLM → Tool Call Decision
-Tool → MCP Server
-Server → CSV Storage
-Result → LLM → User
+List all appointments
+
+Delete appointment:
+
+Delete appointment for Zeinab on Monday from 4:00 to 5:00
 
 Example Tool Call (Internal)
-{
-  "name": "create_appointment",
-  "arguments": {
-    "name": "Zeinab",
-    "date": "Monday",
-    "time": "4:00 to 5:00"
-  }
-}
+create_appointment(
+  name="Zeinab",
+  date="Monday",
+  time="4:00 to 5:00"
+)
 
 Technologies Used
 
-Core AI stack:
+AI and Agent Stack:
 
-Python
+• Python
+• Model Context Protocol (MCP)
+• Ollama
+• llama3.2
 
-Model Context Protocol (MCP)
+System and Backend:
 
-Ollama (Local LLM runtime)
+• AsyncIO
+• JSON-RPC
+• CSV storage
 
-llama3.2 model
+Architecture Patterns:
 
-System stack:
-
-AsyncIO
-
-JSON-RPC
-
-CSV persistence
-
-Structured tool schemas
-
-Architecture patterns:
-
-Agent architecture
-
-Tool-calling pattern
-
-Client–server architecture
-
-Controlled execution model
+• AI agent architecture
+• Tool-calling pattern
+• Client–server architecture
+• Controlled execution model
 
 Installation
-Install Ollama
+
+Install Ollama:
 
 https://ollama.com
 
@@ -195,7 +139,9 @@ Pull model:
 
 ollama pull llama3.2
 
-Install dependencies
+
+Install dependencies:
+
 pip install mcp ollama asyncio
 
 Running the System
@@ -209,86 +155,40 @@ Start MCP client:
 
 python mcp_client.py
 
-Example Usage
+Example Execution Flow
 
-Create appointment:
+User:
 
-Book an appointment for Mariam on Friday at 8:00 to 9:00
+Book appointment for Mariam on Friday from 8:00 to 9:00
 
+System flow:
 
-List appointments:
+User → Client → LLM → Tool Call → MCP Server → CSV → Response
 
-List appointments
+Engineering Concepts Demonstrated
 
-
-Delete appointment:
-
-Delete appointment for Zeinab on Monday at 4:00 to 5:00
-
-Engineering Challenges Solved
-
-Tool-calling integration with local LLM
-
-Secure tool execution via MCP
-
-Client-server async communication
-
-Schema mapping between MCP and Ollama
-
-Persistent storage integration
-
-Tool execution lifecycle management
-
-Skills Demonstrated (AI Engineering Focus)
-
-LLM Tool-Calling Architecture
-
-AI Agent System Design
-
-MCP Protocol Integration
-
-Local LLM Deployment
-
-Structured Tool Schema Design
-
-Async Python Systems
-
-AI System Architecture
-
-Agent Control Flow Design
-
-Persistent Storage Integration
+• AI agent orchestration
+• Tool-calling architecture
+• Local LLM deployment
+• Client–server AI systems
+• Structured tool schema design
+• Persistent storage integration
+• Async system design
 
 Production Concepts Demonstrated
 
-This project demonstrates core production AI engineering concepts:
-
-Tool abstraction layer
-
-Controlled LLM execution
-
-Separation of concerns
-
-Agent orchestration
-
-Persistent storage integration
-
-Local AI deployment
+• Controlled LLM execution
+• Tool abstraction layer
+• Secure tool invocation
+• Separation of concerns
+• Agent control flow
 
 Future Improvements
 
-Database integration (PostgreSQL)
-
-Conflict detection
-
-LangGraph orchestration
-
-REST API interface
-
-Web frontend
-
-Authentication
-
-Multi-user support
-
-Vector database integration
+• Database integration (PostgreSQL)
+• Conflict detection
+• Web interface
+• REST API
+• Multi-user support
+• Authentication
+• Vector database integration
