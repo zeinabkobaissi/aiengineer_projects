@@ -59,8 +59,8 @@ rag_application/
 
 ⚙️ Installation
 1. Clone the repository
-git clone https://github.com/yourusername/rag_application.git
-cd rag_application
+git clone https://github.com/zeinabkobaissi/rag_bot.git
+cd rag_bot
 
 2. Create virtual environment
 python -m venv ragenv
