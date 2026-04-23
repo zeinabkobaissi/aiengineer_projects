@@ -19,7 +19,7 @@ Cyclic refinement
 Stateful memory management
 
 This architecture enables scalable, extensible, and production-ready multi-agent AI workflows.
-
+---
 🧠 System Architecture
 
 The system consists of four specialized agents, coordinated through a LangGraph StateGraph execution pipeline:
@@ -64,7 +64,7 @@ START → Performer → Research → Developer → Analyst → Performer → END
 
 
 This cyclic design allows the system to continuously refine outputs, ensuring higher quality results compared to linear pipelines.
-
+---
 🧩 Core Features
 
 🧠 Multi-Agent Reasoning – Specialized agents collaborate through structured workflows
@@ -88,7 +88,7 @@ LangChain
 Ollama (LLaMA 3.2)
 
 PostgreSQL (Optional - for persistent checkpointing)
-
+---
 📂 Project Structure
 AI-project-manager/
 │
@@ -141,7 +141,7 @@ Design architecture
 Optimize performance
 
 Produce a final professional solution
-
+---
 🧠 Memory Management
 
 This system uses LangGraph checkpointing for state persistence:
@@ -156,7 +156,7 @@ checkpointer = PostgresSaver.from_conn_string("postgresql://user:pass@localhost:
 
 
 This enables multi-session conversational memory and workflow recovery.
-
+---
 
 🏆 Why This Project Matters
 
