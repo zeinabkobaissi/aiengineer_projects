@@ -5,7 +5,7 @@ This project demonstrates a complete machine learning pipeline for breast cancer
 The goal is to identify the most important features and evaluate different machine learning algorithms to predict whether a tumor is malignant or benign.
 
 Project Overview
-
+---
 This project includes:
 
 Loading and exploring the Breast Cancer dataset
@@ -65,6 +65,7 @@ Matplotlib
 Scikit-learn
 
 Project Pipeline
+---
 1. Data Loading
 from sklearn.datasets import load_breast_cancer
 data = load_breast_cancer(as_frame=True)
@@ -160,6 +161,7 @@ Recall for class 1: 100%
 This shows the model prioritizes detecting benign cases.
 
 Project Structure
+---
 breast-cancer-classification/
 │
 ├── breast_cancer_classification.ipynb
@@ -178,7 +180,7 @@ pip install -r requirements.txt
 jupyter notebook
 
 Key Machine Learning Concepts Demonstrated
-
+---
 Feature selection (Mutual Information)
 
 Feature engineering
