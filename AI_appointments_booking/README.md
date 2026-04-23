@@ -6,7 +6,7 @@ The system allows users to create, list, and delete appointments using natural l
 This project demonstrates a production-style AI agent architecture with proper client–server separation, tool schemas, and persistent storage.
 
 Features
-
+---
 • Natural language appointment booking
 • Secure tool execution using MCP protocol
 • Local LLM integration using Ollama (llama3.2)
@@ -17,7 +17,7 @@ Features
 • Fully local (no external APIs required)
 
 System Architecture
-
+---
 User Input
 ↓
 MCP Client (Agent Controller)
@@ -33,6 +33,7 @@ CSV Storage (appointments.csv)
 Response returned to user
 
 Architecture Components
+---
 1. MCP Client
 
 Responsible for:
@@ -108,7 +109,7 @@ create_appointment(
 )
 
 Technologies Used
-
+---
 AI and Agent Stack:
 
 • Python
@@ -184,7 +185,7 @@ Production Concepts Demonstrated
 • Agent control flow
 
 Future Improvements
-
+---
 • Database integration (PostgreSQL)
 • Conflict detection
 • Web interface
