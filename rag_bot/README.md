@@ -5,7 +5,7 @@ A Retrieval-Augmented Generation (RAG) application that allows users to query PD
 This project runs fully locally using Ollama embeddings, making it private, fast, and cost-efficient.
 
 🚀 Features
-
+---
 📄 Load and process PDF documents
 
 ✂️ Split documents into semantic chunks
@@ -21,6 +21,7 @@ This project runs fully locally using Ollama embeddings, making it private, fast
 🔒 Fully local (no external API required)
 
 🏗️ Architecture
+---
 PDF Documents
       │
       ▼
@@ -45,6 +46,7 @@ LLM / QA Chain
 Answer
 
 📂 Project Structure
+---
 rag_application/
 │
 ├── listentoyourgut/        # PDF documents folder
@@ -102,6 +104,7 @@ Pull embedding model:
 ollama pull nomic-embed-text
 
 ▶️ Usage
+---
 Step 1: Add PDF documents
 
 Place your PDF files inside:
@@ -152,7 +155,7 @@ Input:
 
 
 Process:
-
+---
 Embedding created
 
 FAISS searches similar chunks
@@ -182,7 +185,7 @@ NumPy
 PyPDF
 
 📊 Why RAG?
-
+---
 RAG improves LLM responses by grounding answers in real documents.
 
 Benefits:
@@ -202,7 +205,7 @@ No cloud required.
 Your data never leaves your machine.
 
 📈 Future Improvements
-
+---
 Add chat interface (Streamlit)
 
 Add persistent FAISS storage
