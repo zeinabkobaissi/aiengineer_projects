@@ -167,7 +167,7 @@ System flow:
 User → Client → LLM → Tool Call → MCP Server → CSV → Response
 
 Engineering Concepts Demonstrated
-
+---
 • AI agent orchestration
 • Tool-calling architecture
 • Local LLM deployment
