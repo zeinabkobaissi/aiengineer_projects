@@ -1,7 +1,7 @@
 🚀 AI Project Manager — Autonomous Multi-Agent Orchestration Framework
 
 An autonomous multi-agent AI system built using LangGraph that dynamically decomposes complex user goals into structured execution graphs, coordinating multiple specialized agents through adaptive workflows, cyclic feedback loops, and persistent conversational memory.
-
+---
 📌 Overview
 
 This project implements an intelligent AI orchestration engine composed of multiple specialized agents working together to analyze tasks, perform research, design solutions, optimize results, and generate high-quality final outputs.
